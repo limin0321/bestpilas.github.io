@@ -1,0 +1,114 @@
+@import url('https://fonts.cdnfonts.com/css/ica-rubrik-black');
+@import url('https://fonts.cdnfonts.com/css/poppins');
+@import url('https://fonts.cdnfonts.com/css/pixelify-sans');
+@import url('https://fonts.cdnfonts.com/css/mynerve');
+@import url('https://fonts.cdnfonts.com/css/noto-serif-toto');
+
+.font-noto-serif-toto{
+    font-family: 'Noto-Serif-Toto';
+}
+
+
+
+.font-ica-rubrik-black{
+    font-family: 'ica-rubrik-black';
+}
+
+.font-poppins{
+    font-family: 'poppins';
+}
+
+.font-pixelify-sans{
+    font-family: 'pixelify-sans';
+}
+
+.font-mynerve{
+    font-family: 'mynerve';
+}
+
+        
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body::before{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    height: 90%;
+    transform: translateX(-50%);
+    content: '';
+    background-image: url(images/bg.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: top center;
+    pointer-events: none;
+}
+
+
+.banner{
+    margin-top: 5vh;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 99;
+}
+.banner .slider {
+    position: absolute;
+    top: 15%;
+    left: calc(50% - 100px);
+    width: 200px; 
+    height: 200px; 
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    animation: autoRun 50s linear infinite;
+    z-index: 2;
+}
+
+@keyframes autoRun {
+    from {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1000px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(calc((var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+        translateZ(380px); 
+}
+
+.banner .slider .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 99999;
+}
+
+
+
+/*
+Tablet: 768px
+ */
+
+@media screen and (max-width: 767px) {
+    .banner .slider{
+        width: 100px;
+        height: 150px;
+        left: calc(50% - 50px);
+    }
+    .banner .slider .item{
+        transform: 
+            rotateY(calc( (var(--position) - 1) * (360 / var(--quantity)) * 1deg))
+            translateZ(180px);
+    }
+}
+
